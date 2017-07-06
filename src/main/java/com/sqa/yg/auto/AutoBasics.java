@@ -8,7 +8,11 @@
 package com.sqa.yg.auto;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -51,5 +55,19 @@ public class AutoBasics {
 			logger.warn("Screenshot " + fileName + " was not captured to disk correctly.");
 			return false;
 		}
+	}
+
+	public static String getProp(String propName, String fileLocation, String fileName, Logger logger) {
+		Properties props = new Properties();
+		InputStream input;
+		try {
+			input = new FileInputStream(fileLocation + fileName);
+			props.load(input);
+		} catch (FileNotFoundException e) {
+			logger.warn("Can not load config properties file because it was not found: " + fileName);
+		} catch (IOException e) {
+			logger.warn("Can not load config properties file can not be read: " + fileName);
+		}
+		return props.getProperty(propName);
 	}
 }

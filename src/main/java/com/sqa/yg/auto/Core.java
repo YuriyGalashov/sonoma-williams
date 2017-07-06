@@ -89,6 +89,10 @@ public class Core {
 		return this.relTest;
 	}
 
+	public String getProp(String propName) {
+		return AutoBasics.getProp(propName, "src/main/resources/", "config.properties", getLog());
+	}
+
 	/**
 	 * @param driver
 	 *            the driver to set
