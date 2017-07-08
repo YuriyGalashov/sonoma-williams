@@ -7,6 +7,8 @@
  */
 package com.sqa.yg.helpers;
 
+import org.testng.annotations.*;
+
 /**
  * AbstractLoginTest //ADDD (description of class)
  * <p>
@@ -24,7 +26,24 @@ public abstract class AbstractLoginTest extends BasicTest {
 		super(baseUrl);
 	}
 
-	abstract public void login(String username, String password);
+	@BeforeClass
+	public void setupLogin() {
+		login(getProp("userName"), getProp("password"));
+	}
 
-	abstract public void logout();
+	private void login(String prop, String prop2) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@AfterClass
+	public void setups() {
+		logout();
+	}
+
+	private void logout() {
+		// TODO Auto-generated method stub
+
+	}
+
 }

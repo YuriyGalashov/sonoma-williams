@@ -1,14 +1,13 @@
 package com.sqa.yg.helpers;
 
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.chrome.*;
+import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.ie.*;
+import org.testng.annotations.*;
 
-import com.sqa.yg.auto.Core;
+import com.sqa.yg.auto.*;
 
 public class BasicTest extends Core {
 
@@ -27,8 +26,7 @@ public class BasicTest extends Core {
 		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		// Maximize the window
 		getDriver().manage().window().maximize();
-		// Goto Base URL
-		getDriver().get(getBaseURL());
+
 	}
 
 	@BeforeClass(enabled = false)
@@ -40,8 +38,7 @@ public class BasicTest extends Core {
 		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		// Maximize the window
 		getDriver().manage().window().maximize();
-		// Goto Base URL
-		getDriver().get(getBaseURL());
+
 	}
 
 	@BeforeClass(enabled = false)
@@ -55,6 +52,11 @@ public class BasicTest extends Core {
 		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		// Maximize the window
 		getDriver().manage().window().maximize();
+
+	}
+
+	@BeforeMethod
+	public void setupTest() {
 		// Goto Base URL
 		getDriver().get(getBaseURL());
 	}
